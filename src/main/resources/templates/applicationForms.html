@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p>forms</p>
+<style>
+    a{
+        text-decoration: none;
+        color: black;
+    }
+    .s{
+        border: 2px solid black;
+        text-align: center;
+        width: 30%;
+    }
+    .d{
+        border-bottom: 2px solid black;
+        text-align: center;
+        width: 30%;
+    }
+</style>
+<div>
+    <div class="s" th:if="${lastUpdate.getId() != 0}">
+        <a th:href="@{/applicationForms/{id}(id=${lastUpdate.getId()})}">
+            <div>
+                <p>Последнее обновление:</p>
+                <p th:text="${lastUpdate.getId()}"></p>
+                <p style="color:green" th:text="${lastUpdate.getStatus()}"></p>
+            </div>
+        </a>
+    </div>
+    <div class="d" th:each="applicationForm: ${applicationForms}">
+        <a th:href="@{/applicationForms/{id}(id=${applicationForm.getId()})}">
+            <p th:text="${applicationForm.getId()}"></p>
+            <p th:text="${applicationForm.getDevice()}"></p>
+            <p th:text="${applicationForm.getStatus()}"></p>
+        </a>
+    </div>
+    <br>
+    <form action="applicationForms/new" method="get">
+        <button type="submit">Создать новый запрос</button>
+    </form>
+</div>
+</body>
+</html>

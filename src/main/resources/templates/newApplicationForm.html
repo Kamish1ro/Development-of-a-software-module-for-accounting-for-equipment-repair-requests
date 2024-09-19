@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<p>new form</p>
+<form th:method="POST" th:action="@{/applicationForms}" th:object="${applicationForm}">
+
+  <label for="client">ФИО</label>
+    <input type="text" th:field="*{client}" id="client">
+  <div style="color:red" th:if="${#fields.hasErrors('client')}" th:errors="*{client}"></div>
+  <br>
+
+  <label for="device">Устройство</label>
+  <input type="text" th:field="*{device}" id="device">
+  <div style="color:red" th:if="${#fields.hasErrors('device')}" th:errors="*{device}"></div>
+  <br>
+
+  <label for="typeOfFault">Тип неисправности</label>
+  <input type="text" th:field="*{typeOfFault}" id="typeOfFault">
+  <div style="color:red" th:if="${#fields.hasErrors('typeOfFault')}" th:errors="*{typeOfFault}"></div>
+  <br>
+
+  <label for="description">Дополнительное описание</label>
+  <input type="text" th:field="*{description}" id="description">
+  <div style="color:red" th:if="${#fields.hasErrors('description')}" th:errors="*{description}"></div>
+
+  <br>
+  <br>
+  <input type="submit" value="Создать">
+</form>
+</body>
+</html>

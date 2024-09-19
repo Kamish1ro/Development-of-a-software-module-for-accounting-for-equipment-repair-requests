@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p>stats</p>
+<span>Кол-во выполненных заказов: </span><span th:text="${applicationForms.completedOrders().size}"></span><br>
+<span>Среднее время выполнения заказов: </span><span th:text="${applicationForms.averageOrderCompletionTime()}"></span><span> дней</span><br>
+<span>Частая неисправность: </span><span th:text="${applicationForms.frequentMalfunctions()}"></span><br>
+</body>
+</html>

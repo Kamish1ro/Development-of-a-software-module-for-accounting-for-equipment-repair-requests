@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<style>
+    a{
+        text-decoration: none;
+        color: black;
+    }
+    .s{
+        border: 2px solid black;
+        width: 50vh;
+        height: 20vh;
+    }
+    .comm{
+        width: 30%;
+    }
+</style>
+<p>form</p>
+<form action="/applicationForms" method="get">
+    <button type="submit">Все формы</button>
+</form>
+<br>
+<span>ID: </span><span th:text="${applicationForm.getId()}"></span><br>
+<span>Клиент: </span><span th:text="${applicationForm.getClient()}"></span><br>
+<span>Устройство: </span><span th:text="${applicationForm.getDevice()}"></span><br>
+<span>Тип неисправности: </span><span th:text="${applicationForm.getTypeOfFault()}"></span><br>
+<span>Описание: </span><span th:text="${applicationForm.getDescription()}"></span><br>
+<span>Статус: </span><span th:text="${applicationForm.getStatus()}"></span><br>
+<span>Работник: </span><span th:text="${applicationForm.getWorker()}"></span><br>
+<span th:text="${applicationForm.getDate()}"></span><br>
+<br>
+<form th:action="@{/applicationForms/update/{id}(id=${applicationForm.getId()})}" method="get">
+    <button type="submit">Обновить</button>
+</form>
+
+<h2>Комментарии:</h2>
+<form th:method="POST" th:action="@{/applicationForms/comment/{id}(id=${applicationForm.getId()})}" th:object="${addComment}">
+
+    <label for="name">Имя</label>
+    <br>
+    <input type="text" th:field="*{name}" id="name">
+
+    <br>
+
+    <label for="comment">Комментарий</label>
+    <br>
+    <input class="comm" type="text" th:field="*{comment}" id="comment">
+    <br>
+    <br>
+    <input type="submit" value="Написать">
+    <br>
+    <br>
+</form>
+<div class="s">
+    <div th:each="comments: ${comments}">
+        <span th:text="${comments.getName()}"></span><span>: </span><span th:text="${comments.getComment()}"></span>
+    </div>
+</div>
+</body>
+</html>
