@@ -1,2 +1,2 @@
-"# javaproject" 
-"# Development-of-a-software-module-for-accounting-for-equipment-repair-requests" 
+
+# Разработка программного модуля для учета заявок на ремонт оборудования
